@@ -5,28 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>画像を選択</title>
   <link href="image_save.css" rel="stylesheet">
+  <link href="image_save.js" rel="stylesheet">
 </head>
 <body>
   <input type="file" id="fileInput">
   <br>
   <img id="image" alt="選択された画像" style="max-width: 100%;", class="user_img">
-
-  <script>
-    const fileInput = document.getElementById('fileInput');
-    const image = document.getElementById('image');
-    
-    fileInput.addEventListener('change', 
-    //コールバック関数
-    function(event) {
-      const file = event.target.files[0];
-      if (file) {
-        const reader = new FileReader();//FileReader()はファイルを非同期的に読み込むためのWeb API
-        reader.onload = function(e) {
-          image.src = e.target.result;
-        };
-        reader.readAsDataURL(file);
-      }
-    });
-  </script>
 </body>
 </html>
