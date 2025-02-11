@@ -55,6 +55,7 @@
                             const td = document.createElement("td");
                             const imgElement = document.createElement("img");
                             imgElement.src = canvas.toDataURL();
+                            imgElement.width = 100;
                             td.appendChild(imgElement);
                             tr.appendChild(td);
                         }
