@@ -13,3 +13,5 @@ const fileInput = document.getElementById('fileInput');
         reader.readAsDataURL(file);
       }
     });
+
+    //git mergin demo
