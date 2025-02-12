@@ -1,8 +1,16 @@
-        const inputImage = document.getElementById("input_image");
-        const submitButton = document.getElementById("submit");
-        const resultArea = document.getElementById("result_area");
-        const nVertical = document.getElementById("n_vertical");
-        const nHorizontal = document.getElementById("n_horizontal");
+        const inputImage = document.getElementById("input_image");//ファイルの読み込み
+
+        const submitButton = document.getElementById("submit");//分割ボタン
+
+        const nVertical = document.getElementById("n_vertical");//縦に分割する数
+
+        const nHorizontal = document.getElementById("n_horizontal");//横に分割する数
+
+        const resultArea = document.getElementById("result_area");//分割された写真が表示される
+
+        
+
+        
 
         submitButton.addEventListener("click", () => {
             const vertical = parseInt(nVertical.value);
