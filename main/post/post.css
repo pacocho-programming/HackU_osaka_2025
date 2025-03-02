@@ -1,0 +1,94 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(197, 176, 176);
+  height: 100vh;
+  margin: 0;
+}
+
+.main {
+  width: 350px; /* スマホの標準幅に調整 */
+  height: 98vh;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  background: #444;
+  color: white;
+  padding: 15px;
+  text-align: center;
+}
+
+.main-content {
+  background: #333;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* 親要素が残りのスペースを埋める */
+  overflow: hidden;
+}
+
+.sidebar {
+  height: 19px;
+  color: white;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  display: flex; /* アイテムを横並びにする */
+  justify-content: center;
+  gap: 13px;
+}
+
+.sidebar ul li {
+  margin: 0 10px; /* アイテム間の間隔を調整 */
+}
+
+.sidebar ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.sidebar ul li a:hover {
+  color: rgb(94, 135, 132); /* リンクにマウスを重ねたときに色が青に変わる */
+}
+
+.content {
+  background: #ffffff;
+  height: 1000px; /* 高さを1000pxに設定 */
+  overflow-y: auto; /* スクロール可能にする */
+  padding: 15px;
+  color:black;
+}
+
+.post{
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width:349px;
+  height:60px;
+  left:108px;
+  bottom: 0px; 
+}
+
+.post-button{
+  height: 40px;
+  width: 200px;
+  background: rgb(242, 38, 38);
+  border: none;
+  border-radius: 10px;
+  font-size:15px;
+}
+
