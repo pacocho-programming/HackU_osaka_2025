@@ -7,36 +7,6 @@ body {
   margin: 0;
 }
 
-/* ローディング画面のスタイル */
-.loader-container {
-  position: fixed;
-  width: 351px;
-  height: 95vh;
-  display: none; /* 最初は非表示 */
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  border-radius: 10px;
-  padding-top:10px;
-}
-
-/* 既存のローディングアニメーション */
-.loader {
-  width: 50px;
-  height: 50px;
-  border: 6px solid #654d4d;
-  border-top: 6px solid transparent;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-/* ローディングアニメーション */
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-
 
 .main {
   width: 350px; /* スマホの標準幅に調整 */
@@ -126,4 +96,49 @@ body {
   border-radius: 10px;
   font-size: 15px;
 }
+
+.product-img {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.product-name {
+  margin-bottom:20px;
+}
+
+.product-name-detail {
+  width: 315px;
+  height: 30px;
+}
+
+.product-detail {
+  width: 315px;
+  height: 30px;
+  margin-bottom: 20px;
+}
+
+.cost-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cost {
+  margin-left:245px;
+  font-size: 20px;
+}
+
+.cost-add {
+  font-size:10px;
+  padding-top: 10px;
+  padding-left: 5px;
+  color: gray;
+}
+
+.count-product {
+  margin-top: 30px;
+  font-size: 11px;
+}
+
+
 
