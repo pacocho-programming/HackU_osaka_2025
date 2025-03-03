@@ -26,7 +26,8 @@
 
       <div class="content">
         <div class="product-img">
-          <input type="file">
+          <input type="file" id="file-input" accept="image/*">
+          <div id="image-container"></div>
         </div>
 
 
@@ -50,13 +51,13 @@
 
         <div class="count-product">
           <span>出品数:</span>
-          <span>0</span>
+          <span class="post-number">0</span>
         </div>
 
 
         <div class="post">
           
-          <button class="post-button">Post</button>
+          <button class="post-button" onclick="savePost()">Post</button>
           
         </div>
       </div>

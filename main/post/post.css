@@ -17,7 +17,7 @@ body {
   align-items: center;
   z-index: 1000;
   border-radius: 10px;
-  padding-top:10px;
+  padding-top:50px;
 }
 
 /* 既存のローディングアニメーション */
@@ -102,6 +102,8 @@ body {
   padding-bottom: 60px;
   color:black;
 }
+
+
 
 .post {
   position: fixed; /* 画面の特定の位置に固定 */
