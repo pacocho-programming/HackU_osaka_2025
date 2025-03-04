@@ -103,7 +103,66 @@ body {
   color:black;
 }
 
+/* 投稿リストを2列にする */
+.post-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2列にする */
+  gap: 10px; /* 各投稿の間隔を開ける */
+  max-width: 800px;
+  margin: auto;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  align-items: start; /* 投稿の高さが異なっても適切に配置 */
+}
 
+/* 各投稿のデザイン */
+.post-item {
+  background: white;
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column; /* 縦並び */
+  justify-content: space-between; /* 投稿の詳細とボタンの間隔を調整 */
+  gap: 10px;
+  align-items: center;
+  font-size: 10px;
+  /* height: 100%; ← これを削除！ */
+}
+
+/* 投稿タイトル */
+.post-item strong {
+  font-size: 13px;
+  color: #333;
+}
+
+
+.button-group {
+  display: flex;
+  justify-content: space-between; /* 両端に配置 */
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* 購入ボタンのスタイル */
+.post-item button {
+  width: 50px; /* 幅を固定 */
+  height: 20px; /* 高さを固定 */
+  background: rgb(242, 38, 38);
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.3s;
+  margin-top: auto; /* 上の要素が短くてもボタンを下に配置 */
+  text-align: center;
+}
+
+.post-item button:hover {
+  background: darkred;
+}
 
 .post {
   position: fixed; /* 画面の特定の位置に固定 */

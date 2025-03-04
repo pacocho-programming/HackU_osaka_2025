@@ -30,29 +30,78 @@ function displayPosts() {
     div.className = "post-item";
     div.innerHTML = `
       <strong>${post.name.trim()}</strong> (${post.timestamp})<br>
-      ${post.detail.trim()} 
-      <button onclick="deletePost(${index})">削除</button>
+      <p>${post.detail.trim()}</p>
+      <button onclick="buy(${index})">購入</button>
     `;
 
     postList.appendChild(div);
   });
 }
 
-function deletePost(index) {
-  let posts = JSON.parse(localStorage.getItem("posts") || "[]");
-  posts.splice(index, 1);
-  localStorage.setItem("posts", JSON.stringify(posts));
-//消去ボタンを押した時に出品数を減らしていく
-  let postNumberElement = document.querySelector('.post-number');
-  let postNumber = Number(localStorage.getItem("post-count")) || 0;
 
-  if (postNumber > 0) {
-    postNumber -= 1;
-    localStorage.setItem("post-count", postNumber);
-    postNumberElement.textContent = postNumber; // 表示を更新
+function displayPosts() {
+  let postList = document.getElementById("postList");
+  postList.innerHTML = ""; // 一度リセット
+
+  let posts = JSON.parse(localStorage.getItem("posts") || "[]");
+  let purchaseHistory = JSON.parse(localStorage.getItem("purchase") || "[]");
+
+  if (posts.length === 0) {
+    postList.innerHTML = "<p>投稿がありません。</p>";
+    return;
   }
-  displayPosts(); // 再表示
+
+  posts.forEach((post, index) => {
+    let isPurchased = purchaseHistory.some(p => p.name === post.name); // 購入済みチェック
+
+    let div = document.createElement("div");
+    div.className = "post-item";
+    div.innerHTML = `
+      <strong>${post.name.trim()}</strong> (${post.timestamp})<br>
+      ${post.detail.trim()} <strong>¥${post.costs}</strong>
+      <button id="buy-btn-${index}" 
+              ${isPurchased ? "disabled" : ""}
+              style="${isPurchased ? "background:#ccc; cursor:not-allowed;" : ""}" 
+              onclick="buy(${index})">購入</button>
+    `;
+
+    postList.appendChild(div);
+  });
 }
+
+
 
 // ページ読み込み時に実行
 document.addEventListener("DOMContentLoaded", displayPosts);
+
+//購入ボタンが押された時の処理
+let purchaseHistory = [];
+
+function buy(index) {
+  let posts = JSON.parse(localStorage.getItem("posts") || "[]");
+  let purchaseHistory = JSON.parse(localStorage.getItem("purchase") || "[]");
+
+  let post = posts[index]; // 対象の投稿データを取得
+
+  // すでに購入しているかチェック
+  if (purchaseHistory.some(p => p.name === post.name)) {
+    alert(`「${post.name}」はすでに購入済みです！`);
+    return;
+  }
+
+  // 購入履歴に追加して保存
+  purchaseHistory.push(post);
+  localStorage.setItem("purchase", JSON.stringify(purchaseHistory));
+
+  // ボタンを無効化
+  let button = document.getElementById(`buy-btn-${index}`);
+  if (button) {
+    button.disabled = true;
+    button.style.background = "#ccc"; // グレーにする
+    button.style.cursor = "not-allowed";
+  }
+
+  alert(`「${post.name}」を購入予定に追加しました！`);
+}
+
+

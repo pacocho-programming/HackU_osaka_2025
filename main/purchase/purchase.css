@@ -7,7 +7,6 @@ body {
   margin: 0;
 }
 
-
 .main {
   width: 350px; /* スマホの標準幅に調整 */
   height: 98vh;
@@ -69,91 +68,54 @@ body {
   height: 1000px; /* 高さを1000pxに設定 */
   overflow-y: auto; /* スクロール可能にする */
   padding: 15px;
-  padding-bottom: 60px;
-  color:black;
 }
 
-.post {
-  position: fixed; /* 画面の特定の位置に固定 */
-  bottom: 6px; /* 画面下からの距離 */
-  left: 50%; /* 画面の中央に配置 */
-  transform: translateX(-50%); /* 中央揃え */
-  background-color: rgb(255, 255, 255);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 350px;
-  height: 60px;
+.purchase-item {
+  background: #f0e1e1;
   border-radius: 10px;
-  box-shadow: 0px 2px 10px rgba(0,0,0,0.5);
+  padding: 10px;
+  margin-bottom: 10px;
 }
 
-.post-button {
-  height: 40px;
-  width: 200px;
-  background: rgb(242, 38, 38);
-  border: none;
-  border-radius: 10px;
-  font-size: 15px;
-}
-
-.product-img {
-  margin-bottom: 20px;
-  margin-top: 20px;
-}
-
-.product-name {
-  margin-bottom:20px;
-}
-
-.product-name-detail {
-  width: 315px;
-  height: 30px;
-}
-
-.product-detail {
-  width: 315px;
-  height: 30px;
-  margin-bottom: 20px;
-}
-
-.date {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  align-items:  center;
-  margin-left: 20px;
-  margin-bottom: 20px;
-}
-
-.date label {
-  margin-right: 20px;
-}
-
-.cost-content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.detail {
+  font-size: 12px;
 }
 
 .cost {
-  margin-left:245px;
-  font-size: 20px;
+  margin-left: 185px;
 }
 
-.cost-add {
-  font-size:8px;
-  padding-top: 10px;
-  padding-left: 5px;
-  color: gray;
-}
-
-.count-product {
-  margin-top: 20px;
-  font-size: 11px;
+.add-cost {
+  font-size: 10px;
 }
 
 
+.purchase-item button {
+  display: block;
+  background: #ff6347; /* 明るいオレンジ色に変更 */
+  height: 40px; /* 高さを少し大きくして、クリックしやすく */
+  width: 100%; /* 横幅を親要素に合わせる */
+  border-radius: 25px; /* 丸みを強調 */
+  border: none;
+  margin-top: 10px;
+  color: white; /* 文字色を白に設定 */
+  font-size: 16px; /* フォントサイズを少し大きく */
+  text-align: center; /* テキストを中央に配置 */
+  cursor: pointer; /* カーソルをポインターに変更 */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 影をつけて浮き上がらせる */
+  transition: all 0.3s ease; /* ホバー時のスムーズなアニメーション */
+}
+
+.purchase-item button:hover {
+  background: #d84f4f; /* ホバー時に色を少し暗く */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* 影を大きくして浮き上がらせる */
+  transform: translateY(-2px); /* ボタンを少し上に移動させる */
+}
+
+.purchase-item button:focus {
+  outline: none; /* フォーカス時のアウトラインを消す */
+  box-shadow: 0 0 0 3px rgba(255, 99, 71, 0.6); /* フォーカス時に色をつけて強調 */
+}
 
 
 

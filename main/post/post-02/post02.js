@@ -37,6 +37,8 @@ function savePost() {
   let productDetail = document.querySelector('.product-detail').value.trim();
   let postNumberElement = document.querySelector('.post-number'); // span要素の取得
   let postNumber = Number(postNumberElement.textContent); // 数値として取得
+  let costElement = document.querySelector('.cost');
+  let cost = Number(costElement.textContent.replace(/[^\d]/g, '')); // ¥記号を除去して数値に変換
 
   if (isNaN(postNumber)) {
     postNumber = 0; // 初期値を設定（数値でない場合）
@@ -57,7 +59,7 @@ function savePost() {
     return;
   }
 
-  if (productDetail.length > 1000) {
+  if (productDetail.length > 100) {
     alert("商品説明は1000字以内で入力してください。");
     return;
   }
@@ -68,6 +70,7 @@ function savePost() {
     id: postNewNumber, // 投稿番号を保存
     name: productName,
     detail: productDetail,
+    costs: cost,
     timestamp: new Date().toLocaleString()
   });
 
@@ -81,5 +84,36 @@ function savePost() {
 
   alert("投稿が保存されました！");
 
-  
+
 }
+
+//チェックボックスの確認と処理
+let costElement = document.querySelector('.cost');
+let cost = Number(costElement.textContent.replace(/[^\d]/g, '')); // ¥記号を除去して数値に変換
+
+document.querySelectorAll('.date input[type="checkbox"]').forEach(checkbox => {
+  checkbox.addEventListener('change', function() {
+    if (this.checked) {
+
+      if (this.id === 'day3') {
+        cost = 0;
+      } else if (this.id === 'day2') {
+        cost = 200;
+      }
+       else {
+        cost = 500; // 初期値に戻す例
+      }
+
+      // costElementに新しい値を反映
+      costElement.textContent = `¥${cost}`;
+
+      document.querySelectorAll('.date input[type="checkbox"]').forEach(cb => {
+        if (cb !== this) {
+          cb.checked = false;
+        }
+      });
+    }
+  });
+});
+
+
