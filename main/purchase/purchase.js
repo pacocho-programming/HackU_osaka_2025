@@ -5,7 +5,7 @@ function displayPurchases() {
   purchaseList.innerHTML = ""; // リセット
 
   if (purchaseHistory.length === 0) {
-    purchaseList.innerHTML = "<p>購入履歴がありません。</p>";
+    purchaseList.innerHTML = "<p>購入予定がありません。</p>";
     return;
   }
 
@@ -26,10 +26,36 @@ function displayPurchases() {
 
 function buyAgain(index) {
   let purchaseHistory = JSON.parse(localStorage.getItem("purchase") || "[]");
-  let purchase = purchaseHistory[index];
-  alert(`「${purchase.name}」を購入しました！`);
+  let posts = JSON.parse(localStorage.getItem("posts") || "[]");
+  let history = JSON.parse(localStorage.getItem("History") || "[]"); // 初めてなら空配列
 
+  let purchaseItem = purchaseHistory[index];
+
+  // 投稿リストから削除
+  let updatedPosts = posts.filter(post => post.name !== purchaseItem.name);
+  localStorage.setItem("posts", JSON.stringify(updatedPosts));
+
+  // 購入履歴 (purchase) から削除
+  purchaseHistory.splice(index, 1);
+  localStorage.setItem("purchase", JSON.stringify(purchaseHistory));
+
+  // post-countを更新
+  let postCount = parseInt(localStorage.getItem("post-count") || "0");
+  postCount = Math.max(0, postCount - 1); // マイナスにならないようにする
+  localStorage.setItem("post-count", postCount.toString());
+
+  // 購入履歴 (History) に追加
+  history.push(purchaseItem);
+  localStorage.setItem("History", JSON.stringify(history));
+
+  // 画面を更新
+  displayPurchases();
+  alert("購入しました！");
+  displayHistory();
+
+  
 }
+
 
 
 // 🟢 ページ読み込み時に購入履歴を表示

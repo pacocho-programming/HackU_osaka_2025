@@ -48,6 +48,7 @@ body {
   display: flex; /* アイテムを横並びにする */
   justify-content: center;
   gap: 13px;
+  font-size: 14px;;
 }
 
 .sidebar ul li {

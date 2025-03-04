@@ -79,12 +79,10 @@ function savePost() {
   // 画面上の `postNumber` を更新
   postNumberElement.textContent = postNewNumber;
 
-  productName = "";
-  productDetail = "";
+  productName.value = "";
+  productDetail.value = "";
 
   alert("投稿が保存されました！");
-
-
 }
 
 //チェックボックスの確認と処理
