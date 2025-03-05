@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     loaderContainer.style.display = "flex"; // ローディングを表示
 
     setTimeout(() => {
-      window.location.href = "login/signin.html"; // 3秒後にページ遷移
+      window.location.href = "login&signin/signin.html"; // 3秒後にページ遷移
     }, 2000);
   });
 });
