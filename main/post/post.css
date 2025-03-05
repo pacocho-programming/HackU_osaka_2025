@@ -165,6 +165,8 @@ body {
   background: darkred;
 }
 
+
+
 .post {
   position: fixed; /* 画面の特定の位置に固定 */
   bottom: 6px; /* 画面下からの距離 */

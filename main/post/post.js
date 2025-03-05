@@ -56,9 +56,15 @@ function displayPosts() {
 
     let div = document.createElement("div");
     div.className = "post-item";
+    
+    // Google マップのリンク（緯度・経度をパラメータとして渡す）
+    let mapLink = post.latitude && post.longitude
+      ? `<br><a href="https://www.google.com/maps?q=${post.latitude},${post.longitude}" target="_blank" class="post-location">投稿場所を地図で見る</a>`
+      : "";
+
     div.innerHTML = `
       <strong>${post.name.trim()}</strong> (${post.timestamp})<br>
-      ${post.detail.trim()} <strong>¥${post.costs}</strong>
+      ${post.detail.trim()} <strong>¥${post.costs}</strong>${mapLink}<br>
       <button id="buy-btn-${index}" 
               ${isPurchased ? "disabled" : ""}
               style="${isPurchased ? "background:#ccc; cursor:not-allowed;" : ""}" 
@@ -68,6 +74,7 @@ function displayPosts() {
     postList.appendChild(div);
   });
 }
+
 
 
 

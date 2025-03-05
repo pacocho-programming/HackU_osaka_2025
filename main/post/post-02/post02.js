@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function() {
   postNumberElement.textContent = savedPostNumber; // 画面に反映
 });
 
-//投稿内容を保存
+//投稿内容を保存+投稿したユーザーの位置情報を保存
 function savePost() {
   let productName = document.querySelector('.product-name-detail').value.trim();
   let productDetail = document.querySelector('.product-detail').value.trim();
@@ -64,26 +64,41 @@ function savePost() {
     return;
   }
 
-  let posts = JSON.parse(localStorage.getItem("posts") || "[]");
+  // 位置情報を取得
+  navigator.geolocation.getCurrentPosition(
+    function (position) {
+      let latitude = position.coords.latitude;
+      let longitude = position.coords.longitude;
 
-  posts.push({
-    id: postNewNumber, // 投稿番号を保存
-    name: productName,
-    detail: productDetail,
-    costs: cost,
-    timestamp: new Date().toLocaleString()
-  });
+      let posts = JSON.parse(localStorage.getItem("posts") || "[]");
 
-  localStorage.setItem("posts", JSON.stringify(posts));
+      posts.push({
+        id: postNewNumber, // 投稿番号を保存
+        name: productName,
+        detail: productDetail,
+        costs: cost,
+        latitude: latitude, // 緯度を保存
+        longitude: longitude, // 経度を保存
+        timestamp: new Date().toLocaleString()
+      });
 
-  // 画面上の `postNumber` を更新
-  postNumberElement.textContent = postNewNumber;
+      localStorage.setItem("posts", JSON.stringify(posts));
 
-  productName = "";
-  productDetail = "";
+      // 画面上の `postNumber` を更新
+      postNumberElement.textContent = postNewNumber;
 
-  alert("投稿が保存されました！");
+      productName = "";
+      productDetail = "";
+
+      alert("投稿が保存されました！");
+    },
+    function (error) {
+      console.error("位置情報の取得に失敗", error);
+      alert("位置情報の取得に失敗しました。");
+    }
+  );
 }
+
 
 //チェックボックスの確認と処理
 function changingCost() {
