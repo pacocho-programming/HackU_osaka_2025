@@ -18,7 +18,6 @@ body {
   flex-direction: column;
 }
 
-/* ローディング画面のスタイル */
 .loader-container {
   position: fixed;
   width: 351px;
@@ -46,6 +45,7 @@ body {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
 
 .header {
   background: #444;
@@ -100,12 +100,12 @@ body {
   padding: 15px;
 }
 
-.login-main {
+.signin-main {
   display: flex;
   flex-direction: column;
   height: 90%;
   background-color: rgba(0, 0, 0, 0.5); /* 黒色の背景、50%透明 */
-  background-image: url('image/cat.webp');
+  background-image: url('../image/cat.webp');
   background-size: cover; /* 画像を要素全体にフィットさせる */
   background-position: center;
   border-radius: 10px;
@@ -114,7 +114,7 @@ body {
   align-items: center;
 }
 
-.login-letter {
+.signin-letter {
   display: flex;
   justify-content: center;
   font-size: 55px;
@@ -142,11 +142,11 @@ body {
   border: 1px solid #ccc;
 }
 
-.login-button {
+.signin-button {
   margin-top: 10px;
 }
 
-.login-btn {
+.signin-btn {
   padding: 10px 20px;
   background-color: #1161ee;
   color: white;
@@ -155,7 +155,7 @@ body {
   cursor: pointer;
 }
 
-.login-btn:hover {
+.signin-btn:hover {
   background-color: #0d4cbf;
 }
 

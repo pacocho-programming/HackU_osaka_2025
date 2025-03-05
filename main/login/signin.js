@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const postButton = document.querySelector(".signin-page");
+  const postButton = document.querySelector(".login-page");
   const loaderContainer = document.querySelector(".loader-container");
 
   postButton.addEventListener("click", function (event) {
@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     loaderContainer.style.display = "flex"; // ローディングを表示
 
     setTimeout(() => {
-      window.location.href = "login/signin.html"; // 3秒後にページ遷移
+      window.location.href = "..//index.html"; // 3秒後にページ遷移
     }, 2000);
   });
 });

@@ -79,8 +79,8 @@ function savePost() {
   // 画面上の `postNumber` を更新
   postNumberElement.textContent = postNewNumber;
 
-  productName.value = "";
-  productDetail.value = "";
+  productName = "";
+  productDetail = "";
 
   alert("投稿が保存されました！");
 }
