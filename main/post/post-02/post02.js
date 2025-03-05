@@ -86,32 +86,41 @@ function savePost() {
 }
 
 //チェックボックスの確認と処理
-let costElement = document.querySelector('.cost');
-let cost = Number(costElement.textContent.replace(/[^\d]/g, '')); // ¥記号を除去して数値に変換
+function changingCost() {
+  // 現在の価格を取得（¥記号を除去して数値に変換）
+  let costElement = document.querySelector('.cost');
+  let cost = Number(costElement.textContent.replace(/[^\d]/g, ''));
 
-document.querySelectorAll('.date input[type="checkbox"]').forEach(checkbox => {
-  checkbox.addEventListener('change', function() {
-    if (this.checked) {
+  // ユーザーが入力した価格を取得し、余分な空白を削除
+  let costEl = document.querySelector(".cost-detail").value.trim();
 
-      if (this.id === 'day3') {
-        cost = 0;
-      } else if (this.id === 'day2') {
-        cost = 200;
-      }
-       else {
-        cost = 500; // 初期値に戻す例
-      }
+  // ユーザーが入力した価格を数値に変換
+  if (costEl !== "" && !isNaN(costEl)) {
+    cost = Number(costEl); // 有効な数値ならcostに反映
+  } else {
+    cost = 0; // 無効な入力があった場合、デフォルト値に戻す
+  }
 
-      // costElementに新しい値を反映
-      costElement.textContent = `¥${cost}`;
+  // 全角数字や文字が入力されているかを確認する正規表現
+  if (/[０-９]/.test(costEl)) {
+    alert("全角数字は入力できません。半角数字を入力してください。");
+    document.querySelector(".cost-detail").value = "";
+    costElement.textContent = "¥0";
+    return; // 処理を中断
+  } 
 
-      document.querySelectorAll('.date input[type="checkbox"]').forEach(cb => {
-        if (cb !== this) {
-          cb.checked = false;
-        }
-      });
-    }
-  });
-});
+  // 画面に表示を更新
+  costElement.textContent = "¥" + cost;
+}
+
+// 入力が変更された際に呼び出す
+document.querySelector(".cost-detail").addEventListener('input', changingCost);
+
+// 初期の呼び出し（ページロード時に最初の設定を行う）
+changingCost();
+  
+
+
+
 
 

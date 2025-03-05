@@ -118,18 +118,12 @@ body {
   margin-bottom: 20px;
 }
 
-.date {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  align-items:  center;
-  margin-left: 20px;
+.cost-detail {
+  width: 315px;
+  height: 30px;
   margin-bottom: 20px;
 }
 
-.date label {
-  margin-right: 20px;
-}
 
 .cost-content {
   display: flex;
