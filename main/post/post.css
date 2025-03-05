@@ -183,11 +183,29 @@ body {
 }
 
 .post-button {
-  height: 40px;
-  width: 200px;
-  background: rgb(242, 38, 38);
+  display: block;
+  background: #ff6347; /* 明るいオレンジ色に変更 */
+  height: 40px; /* 高さを少し大きくして、クリックしやすく */
+  width: 60%; /* 横幅を親要素に合わせる */
+  border-radius: 25px; /* 丸みを強調 */
   border: none;
-  border-radius: 10px;
-  font-size: 15px;
+  margin-top: 10px;
+  color: white; /* 文字色を白に設定 */
+  font-size: 16px; /* フォントサイズを少し大きく */
+  text-align: center; /* テキストを中央に配置 */
+  cursor: pointer; /* カーソルをポインターに変更 */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 影をつけて浮き上がらせる */
+  transition: all 0.3s ease; /* ホバー時のスムーズなアニメーション */
+}
+
+.post-button:hover {
+  background: #d84f4f; /* ホバー時に色を少し暗く */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* 影を大きくして浮き上がらせる */
+  transform: translateY(-2px); /* ボタンを少し上に移動させる */
+}
+
+.post-button:focus {
+  outline: none; /* フォーカス時のアウトラインを消す */
+  box-shadow: 0 0 0 3px rgba(255, 99, 71, 0.6); /* フォーカス時に色をつけて強調 */
 }
 
