@@ -31,21 +31,7 @@ body {
   padding-top:0px;
 }
 
-/* 既存のローディングアニメーション */
-.loader {
-  width: 70px;
-  height: 70px;
-  border: 6px solid #654d4d;
-  border-top: 6px solid transparent;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
 
-/* ローディングアニメーション */
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
 
 .header {
   background: #444;
@@ -100,64 +86,7 @@ body {
   padding: 15px;
 }
 
-.login-main {
-  display: flex;
-  flex-direction: column;
-  height: 90%;
-  background-color: rgba(0, 0, 0, 0.5); /* 黒色の背景、50%透明 */
-  background-image: url('image/cat.webp');
-  background-size: cover; /* 画像を要素全体にフィットさせる */
-  background-position: center;
-  border-radius: 10px;
-  padding: 20px;
-  justify-content: center;
-  align-items: center;
-}
 
-.login-letter {
-  display: flex;
-  justify-content: center;
-  font-size: 55px;
-  margin-bottom: 30px;
-}
-
-.username-main,
-.password-main {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 15px;
-}
-
-.username-main p,
-.password-main p {
-  font-size: 16px;
-  margin-bottom: 5px;
-}
-
-.username-input,
-.password-input {
-  padding: 10px;
-  font-size: 14px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-}
-
-.login-button {
-  margin-top: 10px;
-}
-
-.login-btn {
-  padding: 10px 20px;
-  background-color: #1161ee;
-  color: white;
-  border: none;
-  border-radius: 25px;
-  cursor: pointer;
-}
-
-.login-btn:hover {
-  background-color: #0d4cbf;
-}
 
 
 

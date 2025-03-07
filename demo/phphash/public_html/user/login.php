@@ -48,7 +48,7 @@ if ($_POST) {
             // ログイン成功時の処理
             $host = $_SERVER['HTTP_HOST'];
             $uri = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-            header("Location: //$host$uri/memberonly.php");
+            header("Location: //$host$uri/../../../../main/index.html");
             exit;
           }
         }
@@ -66,7 +66,7 @@ if ($_POST) {
   if (isset($_SESSION['e']) && $_SESSION['e']) {
     $host = $_SERVER['HTTP_HOST'];
     $uri = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-    header("Location: //$host$uri/memberonly.php");
+    header("Location: //$host$uri/../../../../main/index.html");
     exit;
   }
 
