@@ -1,3 +1,14 @@
+<?php
+session_start();
+//セッション情報がない場合はログイン画面にリダイレクトする
+if (!isset($_SESSION['e'])) {
+  $host = $_SERVER['HTTP_HOST'];
+  $uri = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+  header("Location: //$host$uri/demo_login/login.php");
+  exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,11 +24,6 @@
     </header>
 
     <div class="main-content">
-
-      <div class="loader-container">
-        <div class="loader"></div>
-      </div>
-
       <aside class="sidebar">
         <nav>
           <ul>
@@ -32,7 +38,7 @@
 
       <div class="content">
 
-       
+        <a href="demo_login/logout.php">ログアウトする</a>   
         
         
       </div>
