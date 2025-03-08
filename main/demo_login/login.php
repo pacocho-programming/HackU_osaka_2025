@@ -85,6 +85,8 @@ if ($_POST) {
 </head>
 <body>
   <div class="container">
+  
+
     <h1 class="top-letter">ログイン</h1>
 
     <?php if ($errmessage): ?>
@@ -104,6 +106,7 @@ if ($_POST) {
         <input type="submit" name="login" value="ログイン">
       </div>
     </form>
+    
   </div>
 </body>
 </html>

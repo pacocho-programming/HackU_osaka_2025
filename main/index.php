@@ -36,11 +36,25 @@ if (!isset($_SESSION['e'])) {
         </nav>
       </aside>
 
-      <div class="content">
 
-        <a href="demo_login/logout.php">ログアウトする</a>   
+      <div class="content">
+        <div class="content-card">
+          <h2>お知らせ</h2>
+          <p>最新の更新情報をチェックしてください。</p>
+          <a href="#" class="btn">詳細を見る</a>
+        </div>
+
+        <div class="content-card">
+          <h2>サービスの紹介</h2>
+          <p>便利なサービスをご提供しています。</p>
+          <a href="service/service.html" class="btn">サービスを見る</a>
+        </div>
         
-        
+        <div class="content-card">
+          <h2>ログアウト</h2>
+          <p>セッションを終了するには、以下のボタンを押してください。</p>
+          <a href="demo_login/logout.php" class="btn">ログアウトする</a>
+        </div>
       </div>
     </div>
   </div>
