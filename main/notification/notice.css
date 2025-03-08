@@ -1,0 +1,108 @@
+/* 基本のレイアウト */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* 縦にトップに揃える */
+  background-color: rgb(197, 176, 176);
+  height: 100vh;  /* 画面いっぱいに高さを設定 */
+  margin: 0;
+}
+
+/* メインコンテナ */
+.main {
+  width: 350px;
+  height: 98vh; /* 親要素の高さに合わせる */
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ローディング画面のスタイル */
+.loader-container {
+  position: fixed;
+  width: 351px;
+  height: 80vh;
+  display: none; /* 最初は非表示 */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  border-radius: 10px;
+  padding-top:0px;
+}
+
+.header {
+  background: #444;
+  color: white;
+  padding: 15px;
+  text-align: center;
+}
+
+.main-content {
+  background: #333;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* 親要素が残りのスペースを埋める */
+  overflow: hidden;
+}
+
+.sidebar {
+  height: 19px;
+  color: white;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  display: flex; /* アイテムを横並びにする */
+  justify-content: center;
+  gap: 13px;
+  font-size: 14px;
+}
+
+.sidebar ul li {
+  margin: 0 10px; /* アイテム間の間隔を調整 */
+}
+
+.sidebar ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.sidebar ul li a:hover {
+  color: rgb(94, 135, 132); /* リンクにマウスを重ねたときに色が変わる */
+}
+
+/* コンテンツ */
+.content {
+  background: #f8f9fa; /* 優しいグレー */
+  flex-grow: 1; /* 親要素の残りのスペースを埋める */
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#event-list {
+  /* フェードインアニメーション適用 */
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-in-out forwards;
+}

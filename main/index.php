@@ -41,7 +41,7 @@ if (!isset($_SESSION['e'])) {
         <div class="content-card">
           <h2>お知らせ</h2>
           <p>最新の更新情報をチェックしてください。</p>
-          <a href="#" class="btn">詳細を見る</a>
+          <a href="notification/notice.html" class="btn">詳細を見る</a>
         </div>
 
         <div class="content-card">
