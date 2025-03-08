@@ -1,7 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
+import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
+import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
 
-// Firebaseの初期化
 const firebaseConfig = {
   apiKey: "YOUR_API_KEY",
   authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
@@ -13,30 +13,57 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
+const db = getFirestore(app);
 
-// 地図を初期化
-const map = L.map('map').setView([35.6895, 139.6917], 13); // 初期位置（東京）
+// 地図の初期化
+document.addEventListener("DOMContentLoaded", function () {
+  const map = L.map('map').setView([35.6895, 139.6917], 13); // 東京
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
 
-// OpenStreetMapタイルレイヤー
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);
+  let userMarker;
+  let driverMarker;
+  let routeLayer;
 
-// ユーザー位置取得
-navigator.geolocation.getCurrentPosition((position) => {
-  const userLat = position.coords.latitude;
-  const userLon = position.coords.longitude;
+  // ユーザーの位置を取得
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition((position) => {
+      const userLat = position.coords.latitude;
+      const userLon = position.coords.longitude;
 
-  // ユーザー位置にマーカーを追加
-  L.marker([userLat, userLon]).addTo(map)
-    .bindPopup("あなたの位置")
-    .openPopup();
-  
-  // Firebaseに位置を保存
-  const userRef = ref(db, 'users/user1');
-  set(userRef, {
-    latitude: userLat,
-    longitude: userLon
-  });
+      userMarker = L.marker([userLat, userLon]).addTo(map)
+        .bindPopup("あなたの位置")
+        .openPopup();
+
+      // Firebaseに位置情報を保存
+      const userId = "user1";  // ユーザーID（適宜変更）
+      fetch('https://us-central1-YOUR_PROJECT_ID.cloudfunctions.net/saveUserLocation', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userId, latitude: userLat, longitude: userLon })
+      });
+
+      // 配達員の位置を取得 & 経路を表示
+      fetch('https://us-central1-YOUR_PROJECT_ID.cloudfunctions.net/calculateRoute', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userLat: userLat,
+          userLon: userLon,
+          driverLat: 35.6897, // 配達員の仮の位置（適宜変更）
+          driverLon: 139.6922
+        })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (routeLayer) {
+          map.removeLayer(routeLayer);
+        }
+        routeLayer = L.geoJSON(data, {
+          style: { color: "blue", weight: 5 }
+        }).addTo(map);
+      });
+    });
+  }
 });
