@@ -27,7 +27,7 @@ if (!isset($_SESSION['e'])) {
       <aside class="sidebar">
         <nav>
           <ul>
-            <li><a href="index.html">Home</a></li>
+            <li><a href="index.php">Home</a></li>
             <li><a href="service/service.html">Service</a></li>
             <li><a href="/main/post/post.html">Post</a></li>
             <li><a href="purchase/purchase.html">Purchase</a></li>

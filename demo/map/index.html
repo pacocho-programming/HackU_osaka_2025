@@ -10,12 +10,15 @@
 <body>
 
     <!-- 地図表示エリア -->
-    <div id="map"></div>
+    
+    <div class="map-main">
+        <div id="map"></div>
 
-    <!-- 入力フォーム -->
-    <div id="controls">
-        <input type="text" id="destination" placeholder="目的地 (例: 35.6895, 139.6917)">
-        <button id="routeBtn">ルートを計算</button>
+        <!-- 入力フォーム -->
+        <div id="controls">
+            <input type="text" id="destination" placeholder="目的地">
+            <button id="routeBtn">ルートを計算</button>
+        </div>
     </div>
 
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
