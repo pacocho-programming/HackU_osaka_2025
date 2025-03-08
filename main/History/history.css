@@ -64,6 +64,17 @@ body {
   color: rgb(94, 135, 132); /* リンクにマウスを重ねたときに色が青に変わる */
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .content {
   background: #ffffff;
   height: 1000px; /* 高さを1000pxに設定 */
@@ -76,6 +87,9 @@ body {
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* フェードインアニメーション適用 */
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-in-out forwards;
 }
 
 .history-item {

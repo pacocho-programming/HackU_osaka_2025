@@ -8,7 +8,7 @@ body {
 }
 
 .main {
-  width: 350px; /* スマホの標準幅に調整 */
+  width: 350px;
   height: 98vh;
   background: white;
   border-radius: 10px;
@@ -89,6 +89,17 @@ body {
   align-items: center;
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .content-card {
   background: white;
   border-radius: 10px;
@@ -98,6 +109,9 @@ body {
   max-width: 300px;
   text-align: center;
   margin-bottom: 20px;
+  /* フェードインアニメーション適用 */
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-in-out forwards;
 }
 
 .content-card h2 {
