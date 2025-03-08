@@ -1,0 +1,211 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(197, 176, 176);
+  height: 100vh;
+  margin: 0;
+}
+
+/* ローディング画面のスタイル */
+.loader-container {
+  position: fixed;
+  width: 351px;
+  height: 95vh;
+  display: none; /* 最初は非表示 */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  border-radius: 10px;
+  padding-top:50px;
+}
+
+/* 既存のローディングアニメーション */
+.loader {
+  width: 70px;
+  height: 70px;
+  border: 6px solid #654d4d;
+  border-top: 6px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* ローディングアニメーション */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+
+.main {
+  width: 350px; /* スマホの標準幅に調整 */
+  height: 98vh;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  background: #444;
+  color: white;
+  padding: 15px;
+  text-align: center;
+}
+
+.main-content {
+  background: #333;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* 親要素が残りのスペースを埋める */
+  overflow: hidden;
+}
+
+.sidebar {
+  height: 19px;
+  color: white;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  display: flex; /* アイテムを横並びにする */
+  justify-content: center;
+  gap: 13px;
+  font-size: 12px;
+}
+
+.sidebar ul li {
+  margin: 0 10px; /* アイテム間の間隔を調整 */
+}
+
+.sidebar ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.sidebar ul li a:hover {
+  color: rgb(94, 135, 132); /* リンクにマウスを重ねたときに色が青に変わる */
+}
+
+.content {
+  background: #ffffff;
+  height: 1000px; /* 高さを1000pxに設定 */
+  overflow-y: auto; /* スクロール可能にする */
+  padding: 15px;
+  padding-bottom: 60px;
+  color:black;
+}
+
+/* 投稿リストを2列にする */
+.post-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2列にする */
+  gap: 10px; /* 各投稿の間隔を開ける */
+  max-width: 800px;
+  margin: auto;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  align-items: start; /* 投稿の高さが異なっても適切に配置 */
+}
+
+/* 各投稿のデザイン */
+.post-item {
+  background: white;
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column; /* 縦並び */
+  justify-content: space-between; /* 投稿の詳細とボタンの間隔を調整 */
+  gap: 10px;
+  align-items: center;
+  font-size: 10px;
+  /* height: 100%; ← これを削除！ */
+}
+
+/* 投稿タイトル */
+.post-item strong {
+  font-size: 13px;
+  color: #333;
+}
+
+
+.button-group {
+  display: flex;
+  justify-content: space-between; /* 両端に配置 */
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* 購入ボタンのスタイル */
+.post-item button {
+  width: 50px; /* 幅を固定 */
+  height: 20px; /* 高さを固定 */
+  background: rgb(242, 38, 38);
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.3s;
+  margin-top: auto; /* 上の要素が短くてもボタンを下に配置 */
+  text-align: center;
+}
+
+.post-item button:hover {
+  background: darkred;
+}
+
+
+
+.post {
+  position: fixed; /* 画面の特定の位置に固定 */
+  bottom: 6px; /* 画面下からの距離 */
+  left: 50%; /* 画面の中央に配置 */
+  transform: translateX(-50%); /* 中央揃え */
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 350px;
+  height: 60px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.4);
+}
+
+.post-button {
+  display: block;
+  background: #ff6347; /* 明るいオレンジ色に変更 */
+  height: 40px; /* 高さを少し大きくして、クリックしやすく */
+  width: 60%; /* 横幅を親要素に合わせる */
+  border-radius: 25px; /* 丸みを強調 */
+  border: none;
+  margin-top: 10px;
+  color: white; /* 文字色を白に設定 */
+  font-size: 16px; /* フォントサイズを少し大きく */
+  text-align: center; /* テキストを中央に配置 */
+  cursor: pointer; /* カーソルをポインターに変更 */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 影をつけて浮き上がらせる */
+  transition: all 0.3s ease; /* ホバー時のスムーズなアニメーション */
+}
+
+.post-button:hover {
+  background: #d84f4f; /* ホバー時に色を少し暗く */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* 影を大きくして浮き上がらせる */
+  transform: translateY(-2px); /* ボタンを少し上に移動させる */
+}
+
+.post-button:focus {
+  outline: none; /* フォーカス時のアウトラインを消す */
+  box-shadow: 0 0 0 3px rgba(255, 99, 71, 0.6); /* フォーカス時に色をつけて強調 */
+}
+

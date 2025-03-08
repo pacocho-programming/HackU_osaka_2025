@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="post02.css" rel="stylesheet">
+</head>
+<body>
+  <div class="main">
+    <header class="header">
+      <h1>Welcome</h1>
+    </header>
+
+    <div class="main-content">
+      <aside class="sidebar">
+        <nav>
+          <ul>
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../../service/service.html">Service</a></li>
+            <li><a href="../post.html">Post</a></li>
+            <li><a href="../../purchase/purchase.html">Purchase</a></li>
+            <li><a href="../../History/history.html">History</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <div class="content">
+        <div class="product-img">
+          <input type="file" id="file-input" accept="image/*">
+          <div id="image-container"></div>
+        </div>
+
+
+        <div class="product-name">
+          <span>商品名</span>
+          <textarea placeholder="商品名を記入してください    #20字以内" class="product-name-detail"></textarea>
+        </div>
+
+        <div class="detail">
+          <span>商品説明</span>
+          <textarea placeholder="商品説明を記入してください    #100字以内" class="product-detail"></textarea>
+        </div>
+
+        <div class="cost-area">
+          <span>料金指定</span>
+          <textarea placeholder="希望価格を指定してください" class="cost-detail"></textarea>
+        </div>
+        
+        
+        <div class="product-cost">
+          <span>料金</span>
+          <div class="cost-content">
+            <p class="cost">¥500</p>
+            <p class="cost-add">+送料</p>
+          </div>
+        </div>
+
+        <div class="count-product">
+          <span>出品数:</span>
+          <span class="post-number">0</span>
+        </div>
+
+
+        <div class="post">
+          
+          <button class="post-button" onclick="savePost()">Post</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="post02.js"></script>
+</body>
+</html>

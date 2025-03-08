@@ -1,0 +1,165 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(197, 176, 176);
+  height: 100vh;
+  margin: 0;
+}
+
+.main {
+  width: 350px; /* スマホの標準幅に調整 */
+  height: 98vh;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+.loader-container {
+  position: fixed;
+  width: 351px;
+  height: 80vh;
+  display: none; /* 最初は非表示 */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  border-radius: 10px;
+  padding-top:0px;
+}
+
+/* 既存のローディングアニメーション */
+.loader {
+  width: 70px;
+  height: 70px;
+  border: 6px solid #654d4d;
+  border-top: 6px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* ローディングアニメーション */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+.header {
+  background: #444;
+  color: white;
+  padding: 15px;
+  text-align: center;
+}
+
+.main-content {
+  background: #333;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* 親要素が残りのスペースを埋める */
+  overflow: hidden;
+}
+
+.sidebar {
+  height: 19px;
+  color: white;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  display: flex; /* アイテムを横並びにする */
+  justify-content: center;
+  gap: 13px;
+  font-size: 14px;;
+}
+
+.sidebar ul li {
+  margin: 0 10px; /* アイテム間の間隔を調整 */
+}
+
+.sidebar ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.sidebar ul li a:hover {
+  color: rgb(94, 135, 132); /* リンクにマウスを重ねたときに色が青に変わる */
+}
+
+.content {
+  background: #ffffff;
+  height: 1000px; /* 高さを1000pxに設定 */
+  overflow-y: auto; /* スクロール可能にする */
+  padding: 15px;
+}
+
+.signin-main {
+  display: flex;
+  flex-direction: column;
+  height: 90%;
+  background-color: rgba(0, 0, 0, 0.5); /* 黒色の背景、50%透明 */
+  background-image: url('../image/cat.webp');
+  background-size: cover; /* 画像を要素全体にフィットさせる */
+  background-position: center;
+  border-radius: 10px;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.signin-letter {
+  display: flex;
+  justify-content: center;
+  font-size: 55px;
+  margin-bottom: 30px;
+}
+
+.username-main,
+.password-main {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.username-main p,
+.password-main p {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.username-input,
+.password-input {
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.signin-button {
+  margin-top: 10px;
+}
+
+.signin-btn {
+  padding: 10px 20px;
+  background-color: #1161ee;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.signin-btn:hover {
+  background-color: #0d4cbf;
+}
+
+
+
+
+
