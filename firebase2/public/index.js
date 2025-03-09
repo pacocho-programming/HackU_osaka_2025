@@ -53,12 +53,3 @@ $("#signup").on("click", function () {
     });
 });
 
-// ログアウト処理
-$("#logout").on("click", function () {
-  signOut(auth).then(() => {
-    window.location.href = 'index.html'; // ログインページに遷移
-    localStorage.removeItem('userType'); // ローカルストレージからユーザータイプを削除
-  }).catch((error) => {
-    console.error("ログアウトエラー:", error);
-  });
-});
