@@ -1,20 +1,67 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ユーザーページ</title>
-  <link rel="stylesheet" href="user.css">
+  <title>商品投稿</title>
+  <link href="user.css" rel="stylesheet">
 </head>
 <body>
-  <p>ユーザーページ</p>
+  <div class="main">
+    <header class="header">
+      <h1>ようこそ</h1>
+    </header>
 
-  <!-- ログアウトボタン -->
-  <button id="logout" class="btn">ログアウト</button>
+    <div class="main-content">
+      <aside class="sidebar">
+        <nav>
+          <ul>
+            <li><a href="../../index.php">home</a></li>
+            <li><a href="../../service/service.html">サービス</a></li>
+            <li><a href="../post.html">投稿</a></li>
+            <li><a href="../../purchase/purchase.html">購入</a></li>
+            <li><a href="../../History/history.html">履歴</a></li>
+          </ul>
+        </nav>
+      </aside>
 
-  <!-- JQuery -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <!-- Firebase SDK -->
+      <div class="content">
+        <div class="fade-up">
+          <!-- 商品名セクション -->
+          <div class="product-name">
+            <span>商品名</span>
+            <textarea id="product-name" placeholder="商品名を入力（最大20文字）" class="product-name-detail"></textarea>
+          </div>
+
+          <!-- 商品説明セクション -->
+          <div class="detail">
+            <span>商品説明</span>
+            <textarea id="product-description" placeholder="商品説明を入力（最大100文字）" class="product-detail"></textarea>
+          </div>
+
+          <!-- 価格セクション -->
+          <div class="cost-area">
+            <span>価格</span>
+            <textarea id="product-price" placeholder="希望価格を入力" class="cost-detail"></textarea>
+          </div>
+          
+          <!-- 商品費用の表示 -->
+          <div class="product-cost">
+            <span>料金</span>
+            <div class="cost-content">
+              <p class="cost">¥500</p>
+              <p class="cost-add">+送料</p>
+            </div>
+          </div>
+
+        <!-- 投稿ボタン -->
+        <div class="post">
+          <button class="post-button" id="post-button">投稿</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script type="module" src="user.js"></script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
 
 // Firebase設定
 const firebaseConfig = {
@@ -25,13 +25,13 @@ $("#login").on("click", function () {
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // ログイン成功
-      localStorage.setItem('userType', userType); // ローカルストレージにユーザータイプを保存
+      sessionStorage.setItem('userType', userType); // セッションストレージにユーザータイプを保存
 
       // ユーザータイプに応じて遷移
       if (userType === 'user') {
         window.location.href = 'user/user.html'; // ユーザー画面に遷移
       } else if (userType === 'delivery') {
-        window.location.href = 'deliverly/deliver.html'; // 配達員画面に遷移
+        window.location.href = 'delivery/deliver.html'; // 配達員画面に遷移
       }
     })
     .catch((error) => {
@@ -52,4 +52,3 @@ $("#signup").on("click", function () {
       $("#login-error").text(error.message);
     });
 });
-
