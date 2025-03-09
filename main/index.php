@@ -39,23 +39,25 @@ if (!isset($_SESSION['e'])) {
 
       <div class="content">
         <div class="content-card">
-          <h2>お知らせ</h2>
-          <p>最新の更新情報をチェックしてください。</p>
-          <a href="notification/notice.html" class="btn">詳細を見る</a>
+            <h2>お知らせ</h2>
+            <p>最新の更新情報をチェックしてください。</p>
+            <!-- 最新の更新情報ボタン -->
+            <button id="event-info-btn" class="btn">最新の更新情報</button>
         </div>
 
         <div class="content-card">
-          <h2>サービスの紹介</h2>
-          <p>便利なサービスをご提供しています。</p>
-          <a href="service/service.html" class="btn">サービスを見る</a>
+            <h2>サービスの紹介</h2>
+            <p>便利なサービスをご提供しています。</p>
+            <a href="service/service.html" class="btn">サービスを見る</a>
         </div>
         
         <div class="content-card">
-          <h2>ログアウト</h2>
-          <p>セッションを終了するには、以下のボタンを押してください。</p>
-          <a href="demo_login/logout.php" class="btn">ログアウトする</a>
+            <h2>ログアウト</h2>
+            <p>セッションを終了するには、以下のボタンを押してください。</p>
+            <a href="demo_login/logout.php" class="btn">ログアウトする</a>
         </div>
       </div>
+
     </div>
   </div>
 

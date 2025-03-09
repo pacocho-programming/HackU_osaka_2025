@@ -1,4 +1,3 @@
-// 最新の更新情報ボタンをクリックしたときの動作
 document.getElementById('event-info-btn').addEventListener('click', function(e) {
   e.preventDefault();  // デフォルトのリンク動作を無効化
 
@@ -16,7 +15,7 @@ document.getElementById('event-info-btn').addEventListener('click', function(e) 
             // イベント情報をlocalStorageに保存して、notice.htmlに渡す
             localStorage.setItem('events', JSON.stringify(data.events));
             // notice.htmlに遷移
-            window.location.href = 'notice.html';
+            window.location.href = 'notification/notice.html';  // 遷移
           } else {
             alert('イベント情報が見つかりませんでした。');
           }
