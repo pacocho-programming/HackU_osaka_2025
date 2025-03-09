@@ -8,18 +8,18 @@ document.getElementById('event-info-btn').addEventListener('click', function(e) 
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
 
-      // イベント情報を取得するAPIのURL（例としてEventbriteのAPIを仮定）
-      const apiUrl = `https://www.eventbriteapi.com/v3/events/search/?location.latitude=${latitude}&location.longitude=${longitude}&token=COO7TH2PITYLM3ZJZKAN`;
-
-      // APIからイベント情報を取得
-      fetch(apiUrl)
+      // サーバーにリクエストを送る（APIキーはサーバー側で管理）
+      fetch(`/get-events?lat=${latitude}&lng=${longitude}`)
         .then(response => response.json())
         .then(data => {
-          // イベント情報をlocalStorageに保存して、notice.htmlに渡す
-          localStorage.setItem('events', JSON.stringify(data.events));
-
-          // notice.htmlに遷移
-          window.location.href = 'notice.html';
+          if (data.events) {
+            // イベント情報をlocalStorageに保存して、notice.htmlに渡す
+            localStorage.setItem('events', JSON.stringify(data.events));
+            // notice.htmlに遷移
+            window.location.href = 'notice.html';
+          } else {
+            alert('イベント情報が見つかりませんでした。');
+          }
         })
         .catch(error => {
           console.error('Error fetching events:', error);
