@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Firebase_version9_RealtimeDB(G'sACADEMY初学者用サンプル)</title>
+    <title>Firebase_version9_RealtimeDB</title>
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
@@ -11,6 +11,12 @@
     <div id="login-form">
         <div class="login-container">
             <h2>ログイン</h2>
+            <div class="input-group">
+                <label for="user-type">ログインタイプ：</label>
+                <input type="radio" id="user" name="user-type" value="user" checked> ユーザー
+                <input type="radio" id="delivery" name="user-type" value="delivery"> 配達員
+            </div>
+
             <div class="input-group">
                 <label for="email">メールアドレス：</label>
                 <input type="email" id="email" placeholder="example@example.com">
@@ -25,50 +31,10 @@
         </div>
     </div>
 
-    <!-- チャット＆メインコンテンツ表示 -->
-    <div id="main-form" style="display:none;">
-        <header class="header">
-            <h1>Welcome</h1>
-        </header>
-
-        <div class="main-content">
-            <aside class="sidebar">
-                <nav>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="service/service.html">Service</a></li>
-                        <li><a href="/main/post/post.html">Post</a></li>
-                        <li><a href="purchase/purchase.html">Purchase</a></li>
-                        <li><a href="History/history.html">History</a></li>
-                    </ul>
-                </nav>
-            </aside>
-
-            <div class="content">
-                <div class="content-card">
-                    <h2>お知らせ</h2>
-                    <p>最新の更新情報をチェックしてください。</p>
-                    <button id="event-info-btn" class="btn">最新の更新情報</button>
-                </div>
-
-                <div class="content-card">
-                    <h2>サービスの紹介</h2>
-                    <p>便利なサービスをご提供しています。</p>
-                    <a href="service/service.html" class="btn">サービスを見る</a>
-                </div>
-                
-                <div class="content-card">
-                    <h2>ログアウト</h2>
-                    <p>セッションを終了するには、以下のボタンを押してください。</p>
-                    <button id="logout" class="btn">ログアウトする</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- Firebase SDK -->
     <script type="module" src="index.js"></script>
 </body>
 </html>
+
