@@ -1,5 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
+import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-database.js";
+
 
 // Firebase設定
 const firebaseConfig = {
@@ -15,6 +17,26 @@ const firebaseConfig = {
 // Firebase初期化
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getDatabase(app);
+
+//ユーザー情報をRealtimeDatabaseに保存する関数
+function writeUserData(userId, email, userType) {
+  //ユーザーの種類に応じて保存先を決める
+  const path = userType === 'user' ? 'users/': 'delivers/';
+  //データの保存
+  set(ref(db, path + userId), {
+    email: email
+  }).then(() => {
+    //成功時の処理
+    console.log("successed")
+    alert("ユーザー情報が保存されました！")
+  }).catch((error) => {
+    console.log("failed")
+    alert("データ保存エラー:" + error.message);
+  });
+}
+
+
 
 // ログイン処理
 $("#login").on("click", function () {
@@ -24,12 +46,17 @@ $("#login").on("click", function () {
 
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
+      const user = userCredential.user;
       // ログイン成功
       sessionStorage.setItem('userType', userType); // セッションストレージにユーザータイプを保存
 
-      // ユーザータイプに応じて遷移
+      writeUserData(user.uid, email, userType);
+
+      // ユーザータイプに応じて遷移 //ユーザータイプごとに情報をDatabaseに保存
       if (userType === 'user') {
         window.location.href = 'user/user.html'; // ユーザー画面に遷移
+
+        
       } else if (userType === 'delivery') {
         window.location.href = 'delivery/deliver.html'; // 配達員画面に遷移
       }
@@ -46,6 +73,8 @@ $("#signup").on("click", function () {
 
   createUserWithEmailAndPassword(auth, email, password)
     .then(() => {
+      //const user = userCredential.user;
+      //writeUserData(user.uid, email,userType);
       alert("サインアップ成功！");
     })
     .catch((error) => {

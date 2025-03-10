@@ -1,0 +1,173 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(197, 176, 176);
+  height: 100vh;
+  margin: 0;
+}
+
+/* ローディング画面のスタイル */
+.loader-container {
+  position: fixed;
+  width: 351px;
+  height: 95vh;
+  display: none; /* 最初は非表示 */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  border-radius: 10px;
+  padding-top:50px;
+}
+
+.main {
+  width: 350px; /* スマホの標準幅に調整 */
+  height: 98vh;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  background: #444;
+  color: white;
+  padding: 15px;
+  text-align: center;
+}
+
+.main-content {
+  background: #333;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* 親要素が残りのスペースを埋める */
+  overflow: hidden;
+}
+
+.sidebar {
+  height: 19px;
+  color: white;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  display: flex; /* アイテムを横並びにする */
+  justify-content: center;
+  gap: 13px;
+  font-size: 12px;
+}
+
+.sidebar ul li {
+  margin: 0 10px; /* アイテム間の間隔を調整 */
+}
+
+.sidebar ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.sidebar ul li a:hover {
+  color: rgb(94, 135, 132); /* リンクにマウスを重ねたときに色が青に変わる */
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.content {
+  background: #ffffff;
+  height: 1000px; /* 高さを1000pxに設定 */
+  overflow-y: auto; /* スクロール可能にする */
+  padding: 15px;
+  padding-bottom: 60px;
+  color:black;
+}
+
+.content h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 投稿リストを2列にする */
+.post-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2列にする */
+  gap: 10px; /* 各投稿の間隔を開ける */
+  max-width: 800px;
+  margin: auto;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  align-items: start; /* 投稿の高さが異なっても適切に配置 */
+  /* フェードインアニメーション適用 */
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-in-out forwards;
+}
+
+/* 各投稿のデザイン */
+.post-item {
+  background: white;
+  border: 1px solid #ccc;
+  padding: 10px;  /* 余白を縮める */
+  border-radius: 8px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;  /* アイテム間のスペースを縮める */
+  font-size: 12px; /* フォントサイズを小さくする */
+  align-items: center;
+}
+
+/* 投稿タイトル */
+.post-item strong {
+  font-size: 14px; /* タイトルを少し小さく */
+  color: #333;
+}
+
+.post-item p {
+  font-size: 12px;
+  margin: 2px;  /* パラグラフの文字を小さく */
+}
+
+/* ボタンエリアのデザイン */
+.button-group {
+  display: flex;
+  justify-content: space-between; /* 両端に配置 */
+  gap: 10px;
+  margin-top: 0px;
+}
+
+/* 購入ボタンのスタイル */
+.post-item button {
+  width: 50px;
+  height: 20px;
+  background: rgb(242, 38, 38);
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.post-item button:hover {
+  background: darkred;
+}
+
+
+
+

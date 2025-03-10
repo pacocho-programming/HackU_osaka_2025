@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post List</title>
+  <link rel="stylesheet" href="post.css">
+</head>
+<body>
+  <div class="main">
+    <!-- ローディング画面 -->
+    <div class="loader-container">
+      <div class="loader"></div>
+    </div>
+  
+    <header class="header">
+      <h1>Welcome</h1>
+    </header>
+  
+    <div class="main-content">
+      <aside class="sidebar">
+        <nav>
+          <ul>
+            <li><a href="../index.php">Home</a></li>
+            <li><a href="../service/service.html">Service</a></li>
+            <li><a href="../user.html">Post</a></li>
+            <li><a href="../purchase/purchase.html">Purchase</a></li>
+            <li><a href="../History/history.html">History</a></li>
+          </ul>
+        </nav>
+      </aside>
+  
+      <div class="content">
+        <h1>投稿された商品</h1>
+        <div id="product-list" class="post-list">
+          <!-- 商品情報がここに表示されます -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="post.js"></script>
+</body>
+</html>

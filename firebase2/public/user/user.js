@@ -35,25 +35,45 @@ document.getElementById("post-button").addEventListener("click", function () {
 
   // 入力された内容が空でないか確認
   if (productName && productDescription && productPrice) {
-    // 商品データをFirebase Realtime Databaseに保存
-    const productRef = push(ref(database, "products"));
-    set(productRef, {
-      name: productName,
-      description: productDescription,
-      price: productPrice,
-      timestamp: Date.now(),
+
+    //現在の位置情報取得
+    navigator.geolocation.getCurrentPosition(function(position) {
+      const latitude = position.coords.latitude;//緯度取得
+      const longitude = position.coords.longitude;//経度取得
+
+      const timestamp = new Date().toLocaleString();//時刻を取得
+
+       // 商品データをFirebase Realtime Databaseに保存
+      const productRef = push(ref(database, "products"));
+      set(productRef, {
+        name: productName,
+        description: productDescription,
+        price: productPrice,
+        location: {
+          latitude: latitude,
+          longitude: longitude
+        },
+        timestamp: timestamp
+      })
+      .then(() => {
+        alert("商品が投稿されました!");
+        // フォームをリセット
+        document.getElementById("product-name").value = "";
+        document.getElementById("product-description").value = "";
+        document.getElementById("product-price").value = "";
+      })
+      .catch((error) => {
+        console.error("投稿エラー:", error);
+      });
+    },function(error) {
+      console.error("位置情報の取得エラー:", error);
+      alert("位置情報を取得できませんでした。");
     });
-
-    // フォームをリセット
-    document.getElementById("product-name").value = "";
-    document.getElementById("product-description").value = "";
-    document.getElementById("product-price").value = "";
-
-    alert("商品が投稿されました!");
   } else {
-    alert("すべてのフィールドを入力してください！");
+    alert("すべての項目を入力してください。");
   }
 });
+
 
 function changingCost() {
   let costElement = document.querySelector('.cost'); // 表示用
