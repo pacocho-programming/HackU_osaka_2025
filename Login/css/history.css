@@ -1,28 +1,54 @@
+/* 全体のスタイル */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f4f7fc;
-  margin: 0;
-  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: rgb(197, 176, 176);
   height: 100vh;
+  margin: 0;
 }
 
 .main {
-  background-color: #cbdee4;
-  height: 98vh;
   width: 350px;
-  border: solid;
+  height: 98vh;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ローディング画面のスタイル */
+.loader-container {
+  position: fixed;
+  width: 351px;
+  height: 80vh;
+  display: none; /* 最初は非表示 */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
   border-radius: 10px;
 }
 
-.main h1 {
+/* ヘッダー */
+.header {
+  background: #444;
+  color: white;
+  padding: 15px;
   text-align: center;
-  font-size: 25px;
-  margin: 30px;
 }
 
+/* メインコンテンツ */
+.main-content {
+  background: #333;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* 残りのスペースを埋める */
+  overflow: hidden;
+}
+
+/* サイドバー */
 .sidebar {
   height: 19px;
   color: white;
@@ -30,53 +56,107 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #534b4b;
 }
 
 .sidebar ul {
   list-style: none;
   padding: 0;
-  display: flex;
+  display: flex; /* 横並び */
   justify-content: center;
-  gap: 13px;
-  font-size: 13px;
+  gap: 5px;
+  font-size: 14px;
 }
 
 .sidebar ul li {
-  margin: 0 7px;
+  margin: 0 10px;
 }
 
 .sidebar ul li a {
   color: white;
   text-decoration: none;
+  display: flex;
+  gap: 2px;
 }
 
 .sidebar ul li a:hover {
   color: rgb(94, 135, 132);
 }
 
+/* コンテンツエリア */
 .content {
+  background: #f8f9fa;
+  height: 1000px;
+  overflow-y: auto;
+  padding: 20px;
   display: flex;
-  justify-content: center;  /* 横方向に中央配置 */
-  align-items: center;      /* 縦方向に中央配置 */
-  flex-direction: column;   /* 子要素を縦に並べる */
-  height: calc(100vh - 120px);  /* ヘッダーとサイドバーを考慮した高さ */
+  flex-direction: column;
+  align-items: center;
 }
 
+/* フェードインアニメーション */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
+/* カードデザイン */
+.content-card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 90%;
+  max-width: 300px;
+  text-align: center;
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-in-out forwards;
+}
 
+.content-card h2 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #333;
+}
+
+.content-card p {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* ボタンデザイン */
+.btn {
+  display: inline-block;
+  padding: 10px 15px;
+  background: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #0056b3;
+}
 
 button {
   width: 200px;
   padding: 15px;
-  background-color: #e74c3c;
+  background-color: #001168;
   color: white;
   border: none;
   border-radius: 8px;
   font-size: 18px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-bottom: 20px; /* ボタンとメッセージの間にスペースを追加 */
+  margin-top: 20px;
 }
 
 button:hover {
@@ -84,14 +164,7 @@ button:hover {
 }
 
 #message {
-  margin-top: 20px;
+  margin-top: 10px;
   color: #333;
   font-size: 14px;
-}
-
-/* レスポンシブデザイン */
-@media (max-width: 500px) {
-  .content {
-    height: calc(100vh - 80px);  /* スマホでの高さ調整 */
-  }
 }
