@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../css/post.css">
+</head>
+<body>
+  <div class="main">
+    <header>
+      <h1>ようこそ</h1>
+    </header>
+
+    <div class="main-content">
+      <aside class="sidebar">
+        <nav>
+          <ul>
+            <li><a href="home.html">トップ</a></li>
+            <li><a href="service/service.html">配達状況</a></li>
+            <li><a href="post.html">投稿</a></li>
+            <li><a href="product.html">商品</a></li>
+            <li><a href="history.html">購入履歴</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <div class="content">
+        <input type="text" id="product-name" placeholder="商品名を入力してください">
+        <input type="text" id="product-info" placeholder="商品情報を入力してください">
+        <input type="text" id="product-cost" placeholder="商品価格を入力してください">
+        <button id="serve">保存</button>
+        <!--
+        <div class="product-name">
+          <span>商品名</span>
+          <textarea id="product-name" placeholder="商品名を入力（最大20文字）" class="product-name-detail"></textarea>
+        </div>
+
+        
+        <div class="detail">
+          <span>商品説明</span>
+          <textarea id="product-description" placeholder="商品説明を入力（最大100文字）" class="product-detail"></textarea>
+        </div>
+
+        
+        <div class="cost-area">
+          <span>価格</span>
+          <textarea id="product-price" placeholder="希望価格を入力" class="cost-detail"></textarea>
+        </div>
+        
+       
+        <div class="product-cost">
+          <span>料金</span>
+          <div class="cost-content">
+            <p class="cost">¥500</p>
+            <p class="cost-add">+送料</p>
+          </div>
+        </div>
+
+     
+        <div class="post">
+          <button class="post-button" id="post-button">投稿</button>
+        </div>
+        -->
+      </div>
+          
+    </div>
+  </div>
+
+  <script type="module" src="../firebase-init.js"></script>
+  <script type="module" src="../js/post.js"></script>
+</body>
+</html>
