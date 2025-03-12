@@ -9,7 +9,7 @@ body {
 }
 
 .main {
-  width: 350px;
+  width: 350px; /* スマホの標準幅に調整 */
   height: 98vh;
   background: white;
   border-radius: 10px;
@@ -19,7 +19,6 @@ body {
   flex-direction: column;
 }
 
-/* ヘッダー */
 .header {
   background: #444;
   color: white;
@@ -27,7 +26,14 @@ body {
   text-align: center;
 }
 
-/* サイドバー */
+.main-content {
+  background: #333;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* 親要素が残りのスペースを埋める */
+  overflow: hidden;
+}
+
 .sidebar {
   height: 40px;
   color: white;
@@ -35,21 +41,19 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow-x: auto;
-  white-space: nowrap;
 }
 
 .sidebar ul {
   list-style: none;
   padding: 0;
-  display: flex;
+  display: flex; /* アイテムを横並びにする */
   justify-content: center;
-  gap: 6px;
+  gap: 13px;
   font-size: 14px;
 }
 
 .sidebar ul li {
-  margin: 0 10px;
+  margin: 0 10px; /* アイテム間の間隔を調整 */
 }
 
 .sidebar ul li a {
@@ -58,90 +62,130 @@ body {
 }
 
 .sidebar ul li a:hover {
-  color: rgb(94, 135, 132);
+  color: rgb(94, 135, 132); /* リンクにマウスを重ねたときに色が青に変わる */
 }
 
-/* メインコンテンツ */
-.main-content {
-  background: #333;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  overflow: hidden;
-}
 
-/* コンテンツエリア */
 .content {
-  background: #f8f9fa;
-  height: 1000px;
-  overflow-y: auto;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  background: #ffffff;
+  height: 1000px; /* 高さを1000pxに設定 */
+  overflow-y: auto; /* スクロール可能にする */
+  padding: 15px;
+  padding-bottom: 60px;
+  color:black;
 }
 
-/* 入力フィールド */
-textarea {
-  width: 95%;
-  max-width: 300px;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-top: 5px;
-  resize: none;
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* 料金エリア */
-.product-cost {
-  text-align: center;
-  margin-top: 20px;
-}
-
-.cost-content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-}
-
-.cost {
-  font-size: 18px;
-  font-weight: bold;
-  color: #001168;
-}
-
-.cost-add {
-  font-size: 14px;
-  color: #555;
-}
-
-/* 投稿数 */
-.count-product {
-  text-align: center;
-  margin-top: 10px;
-  font-size: 16px;
+.fade-up {
+  /* フェードインアニメーション適用 */
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-in-out forwards;
 }
 
 /* 投稿ボタン */
 .post {
-  text-align: center;
-  margin-top: 20px;
+  position: fixed; /* 画面の特定の位置に固定 */
+  bottom: 6px; /* 画面下からの距離 */
+  left: 50%; /* 画面の中央に配置 */
+  transform: translateX(-50%); /* 中央揃え */
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 350px;
+  height: 60px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 10px rgba(0,0,0,0.5);
 }
 
 .post-button {
-  width: 200px;
-  padding: 15px;
-  background-color: #001168;
-  color: white;
+  display: block;
+  background: #ff6347; /* 明るいオレンジ色に変更 */
+  height: 40px; /* 高さを少し大きくして、クリックしやすく */
+  width: 60%; /* 横幅を親要素に合わせる */
+  border-radius: 25px; /* 丸みを強調 */
   border: none;
-  border-radius: 8px;
-  font-size: 18px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  margin-top: 10px;
+  color: white; /* 文字色を白に設定 */
+  font-size: 16px; /* フォントサイズを少し大きく */
+  text-align: center; /* テキストを中央に配置 */
+  cursor: pointer; /* カーソルをポインターに変更 */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 影をつけて浮き上がらせる */
+  transition: all 0.3s ease; /* ホバー時のスムーズなアニメーション */
 }
 
 .post-button:hover {
-  background-color: #c0392b;
+  background: #d84f4f; /* ホバー時に色を少し暗く */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* 影を大きくして浮き上がらせる */
+  transform: translateY(-2px); /* ボタンを少し上に移動させる */
+}
+
+.post-button:focus {
+  outline: none; /* フォーカス時のアウトラインを消す */
+  box-shadow: 0 0 0 3px rgba(255, 99, 71, 0.6); /* フォーカス時に色をつけて強調 */
+}
+
+/* 商品画像 */
+.product-img {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+/* 商品名 */
+.product-name {
+  margin-bottom: 20px;
+}
+
+.product-name-detail {
+  width: 315px;
+  height: 30px;
+}
+
+/* 商品詳細 */
+.product-detail {
+  width: 315px;
+  height: 30px;
+  margin-bottom: 20px;
+}
+
+/* 価格 */
+.cost-detail {
+  width: 315px;
+  height: 30px;
+  margin-bottom: 20px;
+}
+
+/* 料金部分 */
+.cost-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cost {
+  margin-left: 245px;
+  font-size: 20px;
+}
+
+.cost-add {
+  font-size: 8px;
+  padding-top: 10px;
+  padding-left: 5px;
+  color: gray;
+}
+
+/* 出品数 */
+.count-product {
+  margin-top: 20px;
+  font-size: 11px;
 }
